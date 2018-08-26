@@ -11,7 +11,7 @@ interface TrainerSource {
 
     fun getAll(page: Int = 0, pageSize: Int = 25): Try<List<Trainer>>
 
-    fun getById(id: String, page: Int = 0, pageSize: Int = 25): Try<Trainer?>
+    fun getById(id: String): Try<Trainer?>
 
     fun getByNameStartingWith(name: String, page: Int = 0, pageSize: Int = 25): Try<List<Trainer>>
 
