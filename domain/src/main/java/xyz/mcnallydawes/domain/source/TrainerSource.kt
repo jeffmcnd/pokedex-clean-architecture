@@ -9,10 +9,10 @@ interface TrainerSource {
 
     fun delete(trainer: Trainer): Try<String>
 
-    fun getAll(page: Int = 0, pageSize: Int = 25): Try<List<Trainer>>
+    fun getAll(): Try<List<Trainer>>
 
     fun getById(id: String): Try<Trainer?>
 
-    fun getByNameStartingWith(name: String, page: Int = 0, pageSize: Int = 25): Try<List<Trainer>>
+    fun getByNameStartingWith(name: String): Try<List<Trainer>>
 
 }

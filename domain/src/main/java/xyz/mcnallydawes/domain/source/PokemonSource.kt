@@ -5,10 +5,10 @@ import xyz.mcnallydawes.domain.entity.Pokemon
 
 interface PokemonSource {
 
-    fun getAll(page: Int = 0, pageSize: Int = 25): Try<List<Pokemon>>
+    fun getAll(): Try<List<Pokemon>>
 
     fun getById(id: String): Try<Pokemon?>
 
-    fun getByNameStartingWith(name: String, page: Int = 0, pageSize: Int = 0): Try<List<Pokemon>>
+    fun getByNameStartingWith(name: String): Try<List<Pokemon>>
 
 }
