@@ -76,6 +76,8 @@ interface PokemonSource {
 
 Note the use of paging in this example which is a consideration for future proofing. Let’s assume that the Pokemon entity will only grow in complexity and that the number of Pokemon will increase for the foreseeable future. In these cases, paging is essential. This is a practicality design. We don’t want to transmit too much data at a time if the user doesn’t require it, regardless of the persistence layer implementation. We’ve defaulted the `page` and `pageSize` variables for ease of use.
 
+NOTE: Paging was removed in an early commit to simplify this example.
+
 So, Pokemon are stored and this application will not support adding new Pokemon to the persistence layer. That would be work on the persistence layer itself to add or remove Pokemon manually. In order to keep things simple we will have a function for getting all of the Pokemon, getting Pokemon by ID, and getting Pokemon by names that start with a given string, also known as searching. Something to note is the naming of the search function `getByNameStartingWith`. It’s important to name this function in a way that the programmer understands how to use it. This name is self-documenting (a dangerous term). Rather than just giving a simplistic name and a parameter/return value, this name tells the user how the function will perform and that we shouldn’t expect Charmander to be returned if we search “arman.”
 
 You might say “We can surely have better search functionality than this” and you would be right. However, for the purposes of this project, we’ll stick with the beginning of the Pokemon’s name.
