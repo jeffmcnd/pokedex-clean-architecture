@@ -1,4 +1,4 @@
-package xyz.mcnallydawes.appapi.response
+package xyz.mcnallydawes.domain.response
 
 sealed class TypeResponse
 object Grass : TypeResponse()
