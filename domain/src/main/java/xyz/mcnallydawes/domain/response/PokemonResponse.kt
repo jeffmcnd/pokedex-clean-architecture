@@ -1,4 +1,4 @@
-package xyz.mcnallydawes.appapi.response
+package xyz.mcnallydawes.domain.response
 
 data class PokemonResponse(
         val id: String,
