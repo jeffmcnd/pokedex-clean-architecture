@@ -1,4 +1,4 @@
-package xyz.mcnallydawes.domain.entity
+package xyz.mcnallydawes.pokedex.entity
 
 import java.util.*
 

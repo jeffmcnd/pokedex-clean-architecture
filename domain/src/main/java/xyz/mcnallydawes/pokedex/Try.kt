@@ -1,4 +1,4 @@
-package xyz.mcnallydawes.domain
+package xyz.mcnallydawes.pokedex
 
 sealed class Try<out T> {
 
