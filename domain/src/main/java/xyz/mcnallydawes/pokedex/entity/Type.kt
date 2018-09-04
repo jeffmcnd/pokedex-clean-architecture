@@ -1,4 +1,4 @@
-package xyz.mcnallydawes.domain.entity
+package xyz.mcnallydawes.pokedex.entity
 
 sealed class Type
 object Grass : Type()

@@ -1,7 +1,7 @@
-package xyz.mcnallydawes.domain.source
+package xyz.mcnallydawes.pokedex.source
 
-import xyz.mcnallydawes.domain.Try
-import xyz.mcnallydawes.domain.entity.Trainer
+import xyz.mcnallydawes.pokedex.Try
+import xyz.mcnallydawes.pokedex.entity.Trainer
 
 interface TrainerSource {
 

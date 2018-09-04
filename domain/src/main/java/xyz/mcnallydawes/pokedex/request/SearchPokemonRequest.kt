@@ -1,3 +1,3 @@
-package xyz.mcnallydawes.domain.request
+package xyz.mcnallydawes.pokedex.request
 
 data class SearchPokemonRequest(val query: String)
