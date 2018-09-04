@@ -31,7 +31,7 @@ ext {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(':domain'), project(':app')
+    implementation project(':domain'), project(':app'), project(':infra-in-memory')
 
     implementation "android.arch.persistence.room:runtime:$room_version"
     implementation "com.android.support.constraint:constraint-layout:1.1.3"

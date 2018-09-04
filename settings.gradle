@@ -1,1 +1,1 @@
-include ':app-android', ':domain', ':app'
+include ':app-android', ':domain', ':app', ':infra-in-memory'
