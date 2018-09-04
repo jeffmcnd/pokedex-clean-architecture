@@ -6,8 +6,8 @@ sealed class Try<out T> {
         operator fun <T> invoke(body: () -> T): Try<T> {
             return try {
                 Success(body())
-            } catch (e: Exception) {
-                Failure(e)
+            } catch (throwable: Throwable) {
+                Failure(throwable)
             }
         }
     }
