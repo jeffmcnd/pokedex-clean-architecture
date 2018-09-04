@@ -55,11 +55,11 @@ data class Success<out T>(val value: T) : Try<T>() {
     }
 }
 
-data class Failure<out T>(val e: Throwable) : Try<T>() {
+data class Failure<out T>(val throwable: Throwable) : Try<T>() {
     override fun isSuccess(): Boolean = false
     override fun isFailure(): Boolean = true
     override fun getOrElse(default: @UnsafeVariance T): T = default
-    override fun get(): T = throw e
+    override fun get(): T = throw throwable
     override fun orElse(default: Try<@UnsafeVariance T>): Try<T> = default
-    override fun <U> fold(fa: (Throwable) -> U, fb: (T) -> U): U = fa(e)
+    override fun <U> fold(fa: (Throwable) -> U, fb: (T) -> U): U = fa(throwable)
 }

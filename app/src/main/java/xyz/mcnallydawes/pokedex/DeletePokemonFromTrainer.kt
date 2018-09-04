@@ -13,7 +13,7 @@ class DeletePokemonFromTrainer(
         val trainerResponse = trainerSource.getById(request.trainerId)
 
         if (trainerResponse is Failure) {
-            throw trainerResponse.e
+            throw trainerResponse.throwable
         }
 
         val trainer = (trainerResponse as Success).value ?: throw Throwable("Trainer with id ${request.trainerId} does not exist.")

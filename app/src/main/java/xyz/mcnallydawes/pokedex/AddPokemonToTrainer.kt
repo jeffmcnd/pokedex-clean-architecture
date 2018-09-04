@@ -15,13 +15,13 @@ class AddPokemonToTrainer(
         val trainerResponse = trainerSource.getById(request.trainerId)
 
         if (trainerResponse is Failure) {
-            throw trainerResponse.e
+            throw trainerResponse.throwable
         }
 
         val pokemonResponse = pokemonSource.getById(request.pokemonId)
 
         if (pokemonResponse is Failure) {
-            throw pokemonResponse.e
+            throw pokemonResponse.throwable
         }
 
         val trainer = (trainerResponse as Success).value
