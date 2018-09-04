@@ -14,14 +14,10 @@ import xyz.mcnallydawes.pokedex.source.PokemonSource
 
 class ListPokemonTest {
 
-    private lateinit var listPokemon: ListPokemonInteractor
 
     private val pokemonSource: PokemonSource = mock()
 
-    @Before
-    fun setUp() {
-        listPokemon = ListPokemon(pokemonSource)
-    }
+    private val listPokemon: ListPokemon = ListPokemon(pokemonSource)
 
     @Test
     fun `execute fails when pokemon source fails`() {

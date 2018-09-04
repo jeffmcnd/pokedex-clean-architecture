@@ -15,14 +15,10 @@ import xyz.mcnallydawes.pokedex.source.PokemonSource
 
 class GetPokemonTest {
 
-    private lateinit var getPokemon: GetPokemonInteractor
 
     private val pokemonSource: PokemonSource = mock()
 
-    @Before
-    fun setUp() {
-        getPokemon = GetPokemon(pokemonSource)
-    }
+    private val getPokemon: GetPokemon = GetPokemon(pokemonSource)
 
     @Test
     fun `execute fails when pokemon not found`() {

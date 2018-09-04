@@ -17,7 +17,7 @@ class GetTrainerTest {
 
     private val trainerSource: TrainerSource = mock()
 
-    private val getTrainer: GetTrainerInteractor = GetTrainer(trainerSource)
+    private val getTrainer: GetTrainer = GetTrainer(trainerSource)
 
     @Test
     fun `execute fails when trainer source fails`() {
