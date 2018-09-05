@@ -5,7 +5,7 @@ import xyz.mcnallydawes.pokedex.entity.Pokemon
 import xyz.mcnallydawes.pokedex.source.PokemonSource
 import java.util.*
 
-class ListPokemonSource : PokemonSource {
+class HashMapPokemonSource : PokemonSource {
 
     private val idsToPokemon: HashMap<String, Pokemon> = hashMapOf(
             "1" to Pokemon("1", "Bulbasaur", setOf(Grass)),

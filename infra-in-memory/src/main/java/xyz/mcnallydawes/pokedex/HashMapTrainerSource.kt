@@ -4,7 +4,7 @@ import xyz.mcnallydawes.pokedex.entity.Trainer
 import xyz.mcnallydawes.pokedex.source.TrainerSource
 import java.util.*
 
-class ListTrainerSource : TrainerSource {
+class HashMapTrainerSource : TrainerSource {
 
     private val idsToTrainers: LinkedHashMap<String, Trainer> = linkedMapOf(
             "1" to Trainer("1", "Ash"),
