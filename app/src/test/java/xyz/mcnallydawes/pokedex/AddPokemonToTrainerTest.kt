@@ -28,7 +28,7 @@ class AddPokemonToTrainerTest {
         doReturn(Success(trainer)).whenever(trainerSource).getById(id)
         doReturn(Success(pokemon)).whenever(pokemonSource).getById(id)
         val response = addPokemonToTrainer.execute(AddPokemonToTrainerRequest(id, id))
-        assertThat(response, instanceOf(Failure::class.java))
+        assertThat(response, instanceOf(Success::class.java))
     }
 
     @Test
