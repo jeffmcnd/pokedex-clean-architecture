@@ -7,7 +7,7 @@ import xyz.mcnallydawes.pokedex.source.PokemonSource
 
 class GetPokemon(private val pokemonSource: PokemonSource) : GetPokemonInteractor {
 
-// Test for Jenkins 4
+// Test for Jenkins 5
 
     override fun execute(request: GetPokemonRequest): Try<GetPokemonResponse> =
             pokemonSource.getById(request.id)
