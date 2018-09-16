@@ -24,7 +24,8 @@ class PokemonAdapter(
         holder.bind(pokemon[position], listener)
     }
 
-    fun addPokemon(pokemon: List<Pokemon>) {
+    fun replace(pokemon: List<Pokemon>) {
+        this.pokemon.clear()
         this.pokemon.addAll(pokemon)
         notifyDataSetChanged()
     }
