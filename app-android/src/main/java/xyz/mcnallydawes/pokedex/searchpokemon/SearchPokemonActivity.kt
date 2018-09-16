@@ -12,6 +12,7 @@ import xyz.mcnallydawes.pokedex.ListPokemon
 import xyz.mcnallydawes.pokedex.R
 import xyz.mcnallydawes.pokedex.Success
 import xyz.mcnallydawes.pokedex.common.adapter.PokemonAdapter
+import xyz.mcnallydawes.pokedex.common.inflater.PokemonInflater
 import xyz.mcnallydawes.pokedex.data.AppDatabase
 import xyz.mcnallydawes.pokedex.data.pokemon.PokemonMapper
 import xyz.mcnallydawes.pokedex.data.pokemon.RoomPokemonSource
@@ -30,7 +31,9 @@ class SearchPokemonActivity : AppCompatActivity() {
 
     private fun setUpViews() {
         pokemonList.layoutManager = LinearLayoutManager(this)
-        pokemonAdapter = PokemonAdapter(LayoutInflater.from(this))
+        pokemonAdapter = PokemonAdapter(PokemonInflater(LayoutInflater.from(this))) { pokemon ->
+            // TODO: Go to Pokemon details page
+        }
         pokemonList.adapter = pokemonAdapter
     }
 
