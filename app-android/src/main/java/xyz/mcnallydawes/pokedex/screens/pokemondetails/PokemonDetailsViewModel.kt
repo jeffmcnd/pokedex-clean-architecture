@@ -26,6 +26,7 @@ class PokemonDetailsViewModel(
         launch(coroutineContext) {
             _model.postValue(pokemonModel.copy(isLoading = true))
             val response = getPokemon.execute(GetPokemonRequest(id))
+            _model.postValue(pokemonModel.copy(isLoading = false))
             when (response) {
                 is Success -> {
                     val pokemon = response.value.pokemon
@@ -33,7 +34,6 @@ class PokemonDetailsViewModel(
                 }
                 is Failure -> _error.postValue(response.throwable)
             }
-            _model.postValue(pokemonModel.copy(isLoading = false))
         }
     }
 
