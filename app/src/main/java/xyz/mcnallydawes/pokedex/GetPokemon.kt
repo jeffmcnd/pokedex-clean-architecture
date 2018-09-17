@@ -10,11 +10,7 @@ class GetPokemon(private val pokemonSource: PokemonSource) : GetPokemonInteracto
     override fun execute(request: GetPokemonRequest): Try<GetPokemonResponse> =
             pokemonSource.getById(request.id)
                     .flatMap { pokemon ->
-                        if (pokemon == null) {
-                            Failure<GetPokemonResponse>(Throwable("Pokemon not found"))
-                        } else {
-                            Success(GetPokemonResponse(pokemon))
-                        }
+                        Success(GetPokemonResponse(pokemon))
                     }
 
 }

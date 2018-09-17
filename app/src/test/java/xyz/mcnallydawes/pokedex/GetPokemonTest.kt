@@ -2,12 +2,9 @@ package xyz.mcnallydawes.pokedex
 
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.whenever
-import org.hamcrest.CoreMatchers.instanceOf
 import org.junit.Assert.assertEquals
-import org.junit.Assert.assertThat
-import org.junit.Before
+import org.junit.Assert.assertNull
 import org.junit.Test
-import xyz.mcnallydawes.pokedex.boundary.GetPokemonInteractor
 import xyz.mcnallydawes.pokedex.entity.Grass
 import xyz.mcnallydawes.pokedex.entity.Pokemon
 import xyz.mcnallydawes.pokedex.request.GetPokemonRequest
@@ -15,17 +12,16 @@ import xyz.mcnallydawes.pokedex.source.PokemonSource
 
 class GetPokemonTest {
 
-
     private val pokemonSource: PokemonSource = mock()
 
     private val getPokemon: GetPokemon = GetPokemon(pokemonSource)
 
     @Test
-    fun `execute fails when pokemon not found`() {
+    fun `execute success when pokemon not found`() {
         val success = Success(null)
         whenever(pokemonSource.getById("1")).thenReturn(success)
-        val response = getPokemon.execute(GetPokemonRequest("1"))
-        assertThat(response, instanceOf(Failure::class.java))
+        val response = getPokemon.execute(GetPokemonRequest("1")) as Success
+        assertNull(response.value.pokemon)
     }
 
     @Test

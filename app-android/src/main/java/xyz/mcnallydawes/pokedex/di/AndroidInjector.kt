@@ -1,6 +1,7 @@
 package xyz.mcnallydawes.pokedex.di
 
 import android.content.Context
+import xyz.mcnallydawes.pokedex.GetPokemon
 import xyz.mcnallydawes.pokedex.ListPokemon
 import xyz.mcnallydawes.pokedex.SearchPokemon
 import xyz.mcnallydawes.pokedex.boundary.ListPokemonInteractor
@@ -29,17 +30,29 @@ object AndroidInjector {
     ): RoomPokemonSource = RoomPokemonSource(pokemonDao, pokemonMapper)
 
     fun getListPokemon(
-            pokemonSource: PokemonSource
+            context: Context,
+            pokemonSource: PokemonSource = getRoomPokemonSource(context)
     ): ListPokemon = ListPokemon(pokemonSource)
 
     fun getSearchPokemon(
-            pokemonSource: PokemonSource
+            context: Context,
+            pokemonSource: PokemonSource = getRoomPokemonSource(context)
     ): SearchPokemon = SearchPokemon(pokemonSource)
+
+    fun getGetPokemon(
+            context: Context,
+            pokemonSource: PokemonSource = getRoomPokemonSource(context)
+    ) : GetPokemon = GetPokemon(pokemonSource)
 
     fun getViewModelFactory(
             context: Context,
-            listPokemon: ListPokemonInteractor = getListPokemon(getRoomPokemonSource(context)),
-            searchPokemon: SearchPokemonInteractor = getSearchPokemon(getRoomPokemonSource(context))
-    ): ViewModelFactory = ViewModelFactory(listPokemon, searchPokemon)
+            listPokemon: ListPokemonInteractor = getListPokemon(context),
+            searchPokemon: SearchPokemonInteractor = getSearchPokemon(context),
+            getPokemon: GetPokemon = getGetPokemon(context)
+    ): ViewModelFactory = ViewModelFactory(
+            listPokemon,
+            searchPokemon,
+            getPokemon
+    )
 
 }

@@ -1,3 +1,4 @@
 <resources>
   <string name="app_name">Pokedex</string>
+    <string name="pokemon_not_found">Pokemon not found</string>
 </resources>
