@@ -1,4 +1,4 @@
-package xyz.mcnallydawes.pokedex.searchpokemon
+package xyz.mcnallydawes.pokedex.screens.searchpokemon
 
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle

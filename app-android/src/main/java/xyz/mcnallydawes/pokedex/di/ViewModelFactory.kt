@@ -4,8 +4,8 @@ import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import xyz.mcnallydawes.pokedex.boundary.ListPokemonInteractor
 import xyz.mcnallydawes.pokedex.boundary.SearchPokemonInteractor
-import xyz.mcnallydawes.pokedex.searchpokemon.SearchPokemonModel
-import xyz.mcnallydawes.pokedex.searchpokemon.SearchPokemonViewModel
+import xyz.mcnallydawes.pokedex.screens.searchpokemon.SearchPokemonModel
+import xyz.mcnallydawes.pokedex.screens.searchpokemon.SearchPokemonViewModel
 import kotlin.coroutines.experimental.CoroutineContext
 
 class ViewModelFactory(
