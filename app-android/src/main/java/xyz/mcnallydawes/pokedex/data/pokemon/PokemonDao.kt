@@ -17,7 +17,7 @@ interface PokemonDao {
     @Query("select * from pokemon")
     fun getAll() : List<RoomPokemon>
 
-    @Query("select * from pokemon where LOWER(name) like LOWER(:name)")
+    @Query("select * from pokemon where name like :name")
     fun getByNameStartingWith(name: String): List<RoomPokemon>
 
 }

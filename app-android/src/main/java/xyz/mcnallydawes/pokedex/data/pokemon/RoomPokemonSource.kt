@@ -25,7 +25,7 @@ class RoomPokemonSource(
     }
 
     override fun getByNameStartingWith(name: String): Try<List<Pokemon>> = Try {
-        dao.getByNameStartingWith(name).map { pokemon ->
+        dao.getByNameStartingWith("%$name%").map { pokemon ->
             mapper.fromRoom(pokemon)
         }
     }

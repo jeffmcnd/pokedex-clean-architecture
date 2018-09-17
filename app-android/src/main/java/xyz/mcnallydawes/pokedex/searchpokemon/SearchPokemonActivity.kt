@@ -1,53 +1,85 @@
 package xyz.mcnallydawes.pokedex.searchpokemon
 
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
+import android.view.View
+import android.widget.TextView
+import com.jakewharton.rxbinding2.widget.RxTextView
 import kotlinx.android.synthetic.main.activity_search_pokemon.*
-import kotlinx.coroutines.experimental.android.UI
-import kotlinx.coroutines.experimental.launch
-import xyz.mcnallydawes.pokedex.Failure
-import xyz.mcnallydawes.pokedex.ListPokemon
 import xyz.mcnallydawes.pokedex.R
-import xyz.mcnallydawes.pokedex.Success
 import xyz.mcnallydawes.pokedex.common.adapter.PokemonAdapter
-import xyz.mcnallydawes.pokedex.data.AppDatabase
-import xyz.mcnallydawes.pokedex.data.pokemon.PokemonMapper
-import xyz.mcnallydawes.pokedex.data.pokemon.RoomPokemonSource
-import xyz.mcnallydawes.pokedex.request.ListPokemonRequest
+import xyz.mcnallydawes.pokedex.common.constants.Extras
+import xyz.mcnallydawes.pokedex.common.inflater.PokemonInflater
+import xyz.mcnallydawes.pokedex.common.livedata.NonNullObserver
+import xyz.mcnallydawes.pokedex.di.AndroidInjector
+import java.util.concurrent.TimeUnit
 
 class SearchPokemonActivity : AppCompatActivity() {
 
-    private lateinit var pokemonAdapter: PokemonAdapter
+    private val vm: SearchPokemonViewModel by lazy {
+        val factory = AndroidInjector.getViewModelFactory(this)
+        ViewModelProviders.of(this, factory).get(SearchPokemonViewModel::class.java)
+    }
+
+    private val pokemonAdapter: PokemonAdapter by lazy {
+        val inflater = PokemonInflater(LayoutInflater.from(this))
+        PokemonAdapter(inflater) { pokemon ->
+            // TODO: Go to Pokemon details page
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search_pokemon)
+
         setUpViews()
-        start()
+        setUpObservers()
+
+        val isInitialized = savedInstanceState?.getBoolean(Extras.IS_VIEW_MODEL_INITIALIZED) ?: false
+        if (!isInitialized) {
+            vm.load()
+        }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle?) {
+        outState?.putBoolean(Extras.IS_VIEW_MODEL_INITIALIZED, true)
+        super.onSaveInstanceState(outState)
     }
 
     private fun setUpViews() {
         pokemonList.layoutManager = LinearLayoutManager(this)
-        pokemonAdapter = PokemonAdapter(LayoutInflater.from(this))
         pokemonList.adapter = pokemonAdapter
+
+        clearBtn.setOnClickListener {
+            clearBtn.visibility = View.GONE
+            searchEditText.setText("", TextView.BufferType.EDITABLE)
+            vm.load()
+        }
+
+        RxTextView.afterTextChangeEvents(searchEditText)
+                .skip(1)
+                .filter { searchEditText.text.toString().length >= 2 }
+                .debounce(400, TimeUnit.MILLISECONDS)
+                .subscribe {
+                    vm.search(searchEditText.text.toString())
+                }
     }
 
-    private fun start() {
+    private fun setUpObservers() {
+        vm.model.observe(this, NonNullObserver(render))
+        vm.error.observe(this, NonNullObserver(handleError))
+    }
 
-        val pokemonDao = AppDatabase.getInstance(this).pokemonDao()
-        val pokemonMapper = PokemonMapper()
-        val pokemonSource = RoomPokemonSource(pokemonDao, pokemonMapper)
-        val listPokemon = ListPokemon(pokemonSource)
+    private val render: (SearchPokemonModel) -> Unit = { model ->
+        pokemonAdapter.replace(model.pokemon)
+    }
 
-        launch(UI) {
-            val response = listPokemon.execute(ListPokemonRequest())
-            when (response) {
-                is Success -> pokemonAdapter.addPokemon(response.value.pokemon)
-                is Failure -> TODO("Implement")
-            }
-        }
+    private val handleError: (Throwable) -> Unit = { throwable ->
+        Snackbar.make(layout, throwable.message ?: "An error occurred", Snackbar.LENGTH_LONG).show()
     }
 
 }
