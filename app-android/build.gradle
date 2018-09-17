@@ -47,6 +47,8 @@ dependencies {
     implementation "com.android.support:design:$support_lib_version"
     implementation "com.android.support:recyclerview-v7:$support_lib_version"
 
+    implementation 'com.jakewharton.rxbinding2:rxbinding:2.1.1'
+
     implementation "com.squareup.moshi:moshi:1.6.0"
 
     kapt "android.arch.persistence.room:compiler:$room_version"

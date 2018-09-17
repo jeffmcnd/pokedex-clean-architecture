@@ -6,6 +6,9 @@ import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
+import android.view.View
+import android.widget.TextView
+import com.jakewharton.rxbinding2.widget.RxTextView
 import kotlinx.android.synthetic.main.activity_search_pokemon.*
 import xyz.mcnallydawes.pokedex.R
 import xyz.mcnallydawes.pokedex.common.adapter.PokemonAdapter
@@ -13,6 +16,7 @@ import xyz.mcnallydawes.pokedex.common.constants.Extras
 import xyz.mcnallydawes.pokedex.common.inflater.PokemonInflater
 import xyz.mcnallydawes.pokedex.common.livedata.NonNullObserver
 import xyz.mcnallydawes.pokedex.di.AndroidInjector
+import java.util.concurrent.TimeUnit
 
 class SearchPokemonActivity : AppCompatActivity() {
 
@@ -49,6 +53,20 @@ class SearchPokemonActivity : AppCompatActivity() {
     private fun setUpViews() {
         pokemonList.layoutManager = LinearLayoutManager(this)
         pokemonList.adapter = pokemonAdapter
+
+        clearBtn.setOnClickListener {
+            clearBtn.visibility = View.GONE
+            searchEditText.setText("", TextView.BufferType.EDITABLE)
+            vm.load()
+        }
+
+        RxTextView.afterTextChangeEvents(searchEditText)
+                .skip(1)
+                .filter { searchEditText.text.toString().length >= 2 }
+                .debounce(400, TimeUnit.MILLISECONDS)
+                .subscribe {
+                    vm.search(searchEditText.text.toString())
+                }
     }
 
     private fun setUpObservers() {
