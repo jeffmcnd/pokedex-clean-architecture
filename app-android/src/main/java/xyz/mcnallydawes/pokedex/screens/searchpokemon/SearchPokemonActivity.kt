@@ -1,6 +1,7 @@
-package xyz.mcnallydawes.pokedex.searchpokemon
+package xyz.mcnallydawes.pokedex.screens.searchpokemon
 
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
@@ -16,6 +17,7 @@ import xyz.mcnallydawes.pokedex.common.constants.Extras
 import xyz.mcnallydawes.pokedex.common.inflater.PokemonInflater
 import xyz.mcnallydawes.pokedex.common.livedata.NonNullObserver
 import xyz.mcnallydawes.pokedex.di.AndroidInjector
+import xyz.mcnallydawes.pokedex.screens.pokemondetails.PokemonDetailsActivity
 import java.util.concurrent.TimeUnit
 
 class SearchPokemonActivity : AppCompatActivity() {
@@ -28,7 +30,9 @@ class SearchPokemonActivity : AppCompatActivity() {
     private val pokemonAdapter: PokemonAdapter by lazy {
         val inflater = PokemonInflater(LayoutInflater.from(this))
         PokemonAdapter(inflater) { pokemon ->
-            // TODO: Go to Pokemon details page
+            val intent = Intent(this, PokemonDetailsActivity::class.java)
+            intent.putExtra(Extras.POKEMON_ID, pokemon.id)
+            startActivity(intent)
         }
     }
 
