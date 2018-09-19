@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
 import com.jakewharton.rxbinding2.widget.RxTextView
+import com.jakewharton.rxbinding2.widget.TextViewAfterTextChangeEvent
 import kotlinx.android.synthetic.main.activity_search_pokemon.*
 import xyz.mcnallydawes.pokedex.R
 import xyz.mcnallydawes.pokedex.common.adapter.PokemonAdapter
@@ -77,22 +78,27 @@ class SearchPokemonActivity : AppCompatActivity() {
     private fun setUpSearchEditText() {
         RxTextView.afterTextChangeEvents(searchEditText)
                 .skip(1)
-                .doOnNext {
-                    clearBtn.visibility = if (searchEditText.text.toString().isNotEmpty()) {
-                        View.VISIBLE
-                    } else {
-                        View.GONE
-                    }
-                }
+                .doOnNext(updateClearBtnVisibility)
                 .debounce(400, TimeUnit.MILLISECONDS)
-                .subscribe {
-                    val query = searchEditText.text.toString()
-                    if (query.isEmpty()) {
-                        vm.load()
-                    } else if (query.length >= 2) {
-                        vm.search(searchEditText.text.toString())
-                    }
-                }
+                .subscribe(handleQuery, {})
+    }
+
+    private val updateClearBtnVisibility: (TextViewAfterTextChangeEvent) -> Unit = { event ->
+        val query = event.view().text
+        clearBtn.visibility = if (query.isNotEmpty()) {
+            View.VISIBLE
+        } else {
+            View.GONE
+        }
+    }
+
+    private val handleQuery: (TextViewAfterTextChangeEvent) -> Unit = { event ->
+        val query = event.view().text.toString()
+        if (query.isEmpty()) {
+            vm.load()
+        } else if (query.length >= 2) {
+            vm.search(searchEditText.text.toString())
+        }
     }
 
     private fun setUpObservers() {
