@@ -55,21 +55,43 @@ class SearchPokemonActivity : AppCompatActivity() {
     }
 
     private fun setUpViews() {
+        setUpPokemonRecyclerView()
+        setUpClearBtn()
+        setUpSearchEditText()
+    }
+
+    private fun setUpPokemonRecyclerView() {
         pokemonList.layoutManager = LinearLayoutManager(this)
         pokemonList.adapter = pokemonAdapter
+    }
 
+    private fun setUpClearBtn() {
+        clearBtn.visibility = View.GONE
         clearBtn.setOnClickListener {
             clearBtn.visibility = View.GONE
             searchEditText.setText("", TextView.BufferType.EDITABLE)
             vm.load()
         }
+    }
 
+    private fun setUpSearchEditText() {
         RxTextView.afterTextChangeEvents(searchEditText)
                 .skip(1)
-                .filter { searchEditText.text.toString().length >= 2 }
+                .doOnNext {
+                    clearBtn.visibility = if (searchEditText.text.toString().isNotEmpty()) {
+                        View.VISIBLE
+                    } else {
+                        View.GONE
+                    }
+                }
                 .debounce(400, TimeUnit.MILLISECONDS)
                 .subscribe {
-                    vm.search(searchEditText.text.toString())
+                    val query = searchEditText.text.toString()
+                    if (query.isEmpty()) {
+                        vm.load()
+                    } else if (query.length >= 2) {
+                        vm.search(searchEditText.text.toString())
+                    }
                 }
     }
 
