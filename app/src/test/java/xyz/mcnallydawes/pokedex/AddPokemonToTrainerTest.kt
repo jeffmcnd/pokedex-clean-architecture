@@ -8,12 +8,12 @@ import org.hamcrest.CoreMatchers.instanceOf
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertThat
 import org.junit.Test
-import xyz.mcnallydawes.pokedex.entity.Fire
-import xyz.mcnallydawes.pokedex.entity.Pokemon
-import xyz.mcnallydawes.pokedex.entity.Trainer
-import xyz.mcnallydawes.pokedex.request.AddPokemonToTrainerRequest
-import xyz.mcnallydawes.pokedex.source.PokemonSource
-import xyz.mcnallydawes.pokedex.source.TrainerSource
+import xyz.mcnallydawes.pokedex.domain.entity.Fire
+import xyz.mcnallydawes.pokedex.domain.entity.Pokemon
+import xyz.mcnallydawes.pokedex.domain.entity.Trainer
+import xyz.mcnallydawes.pokedex.domain.request.AddPokemonToTrainerRequest
+import xyz.mcnallydawes.pokedex.domain.source.PokemonSource
+import xyz.mcnallydawes.pokedex.domain.source.TrainerSource
 
 class AddPokemonToTrainerTest {
     private val trainerSource: TrainerSource = mock()

@@ -1,9 +1,9 @@
 package xyz.mcnallydawes.pokedex
 
-import xyz.mcnallydawes.pokedex.boundary.GetTrainerInteractor
-import xyz.mcnallydawes.pokedex.request.GetTrainerRequest
-import xyz.mcnallydawes.pokedex.response.GetTrainerResponse
-import xyz.mcnallydawes.pokedex.source.TrainerSource
+import xyz.mcnallydawes.pokedex.domain.boundary.GetTrainerInteractor
+import xyz.mcnallydawes.pokedex.domain.request.GetTrainerRequest
+import xyz.mcnallydawes.pokedex.domain.response.GetTrainerResponse
+import xyz.mcnallydawes.pokedex.domain.source.TrainerSource
 
 class GetTrainer(private val trainerSource: TrainerSource) : GetTrainerInteractor {
 

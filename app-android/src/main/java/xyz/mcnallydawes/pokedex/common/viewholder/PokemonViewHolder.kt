@@ -2,16 +2,14 @@ package xyz.mcnallydawes.pokedex.common.viewholder
 
 import android.support.v4.content.res.ResourcesCompat
 import android.support.v7.widget.RecyclerView
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import kotlinx.android.synthetic.main.item_pokemon.view.*
 import xyz.mcnallydawes.pokedex.R
 import xyz.mcnallydawes.pokedex.common.adapter.PokemonClickListener
-import xyz.mcnallydawes.pokedex.entity.Fire
-import xyz.mcnallydawes.pokedex.entity.Grass
-import xyz.mcnallydawes.pokedex.entity.Pokemon
-import xyz.mcnallydawes.pokedex.entity.Water
+import xyz.mcnallydawes.pokedex.domain.entity.Fire
+import xyz.mcnallydawes.pokedex.domain.entity.Grass
+import xyz.mcnallydawes.pokedex.domain.entity.Pokemon
+import xyz.mcnallydawes.pokedex.domain.entity.Water
 
 class PokemonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 

@@ -6,10 +6,10 @@ import android.arch.lifecycle.ViewModel
 import kotlinx.coroutines.experimental.launch
 import xyz.mcnallydawes.pokedex.Failure
 import xyz.mcnallydawes.pokedex.Success
-import xyz.mcnallydawes.pokedex.boundary.ListPokemonInteractor
-import xyz.mcnallydawes.pokedex.boundary.SearchPokemonInteractor
-import xyz.mcnallydawes.pokedex.request.ListPokemonRequest
-import xyz.mcnallydawes.pokedex.request.SearchPokemonRequest
+import xyz.mcnallydawes.pokedex.domain.boundary.ListPokemonInteractor
+import xyz.mcnallydawes.pokedex.domain.boundary.SearchPokemonInteractor
+import xyz.mcnallydawes.pokedex.domain.request.ListPokemonRequest
+import xyz.mcnallydawes.pokedex.domain.request.SearchPokemonRequest
 import kotlin.coroutines.experimental.CoroutineContext
 
 class SearchPokemonViewModel(

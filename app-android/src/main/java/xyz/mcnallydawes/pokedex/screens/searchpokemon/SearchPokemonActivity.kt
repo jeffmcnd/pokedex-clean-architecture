@@ -1,6 +1,5 @@
 package xyz.mcnallydawes.pokedex.screens.searchpokemon
 
-import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
@@ -12,21 +11,18 @@ import android.widget.TextView
 import com.jakewharton.rxbinding2.widget.RxTextView
 import com.jakewharton.rxbinding2.widget.TextViewAfterTextChangeEvent
 import kotlinx.android.synthetic.main.activity_search_pokemon.*
+import org.koin.android.ext.android.inject
 import xyz.mcnallydawes.pokedex.R
 import xyz.mcnallydawes.pokedex.common.adapter.PokemonAdapter
 import xyz.mcnallydawes.pokedex.common.constants.Extras
 import xyz.mcnallydawes.pokedex.common.inflater.PokemonInflater
 import xyz.mcnallydawes.pokedex.common.livedata.NonNullObserver
-import xyz.mcnallydawes.pokedex.di.AndroidInjector
 import xyz.mcnallydawes.pokedex.screens.pokemondetails.PokemonDetailsActivity
 import java.util.concurrent.TimeUnit
 
 class SearchPokemonActivity : AppCompatActivity() {
 
-    private val vm: SearchPokemonViewModel by lazy {
-        val factory = AndroidInjector.getViewModelFactory(this)
-        ViewModelProviders.of(this, factory).get(SearchPokemonViewModel::class.java)
-    }
+    private val vm: SearchPokemonViewModel by inject()
 
     private val pokemonAdapter: PokemonAdapter by lazy {
         val inflater = PokemonInflater(LayoutInflater.from(this))

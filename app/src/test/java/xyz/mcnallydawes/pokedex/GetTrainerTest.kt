@@ -7,11 +7,10 @@ import org.hamcrest.CoreMatchers.instanceOf
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Assert.assertEquals
 import org.junit.Test
-import xyz.mcnallydawes.pokedex.boundary.GetTrainerInteractor
-import xyz.mcnallydawes.pokedex.entity.Pokemon
-import xyz.mcnallydawes.pokedex.entity.Trainer
-import xyz.mcnallydawes.pokedex.request.GetTrainerRequest
-import xyz.mcnallydawes.pokedex.source.TrainerSource
+import xyz.mcnallydawes.pokedex.domain.entity.Pokemon
+import xyz.mcnallydawes.pokedex.domain.entity.Trainer
+import xyz.mcnallydawes.pokedex.domain.request.GetTrainerRequest
+import xyz.mcnallydawes.pokedex.domain.source.TrainerSource
 
 class GetTrainerTest {
 

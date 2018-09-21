@@ -1,0 +1,6 @@
+package xyz.mcnallydawes.pokedex.domain.boundary
+
+import xyz.mcnallydawes.pokedex.domain.request.DeletePokemonFromTrainerRequest
+import xyz.mcnallydawes.pokedex.domain.response.DeletePokemonFromTrainerResponse
+
+interface DeletePokemonFromTrainerInteractor : Interactor<DeletePokemonFromTrainerRequest, DeletePokemonFromTrainerResponse>

@@ -8,13 +8,13 @@ import org.hamcrest.CoreMatchers.instanceOf
 import org.junit.Assert.assertThat
 import org.junit.Assert.assertTrue
 import org.junit.Test
-import xyz.mcnallydawes.pokedex.entity.Fire
-import xyz.mcnallydawes.pokedex.entity.Pokemon
-import xyz.mcnallydawes.pokedex.entity.Trainer
-import xyz.mcnallydawes.pokedex.entity.Water
-import xyz.mcnallydawes.pokedex.request.DeletePokemonFromTrainerRequest
-import xyz.mcnallydawes.pokedex.response.DeletePokemonFromTrainerResponse
-import xyz.mcnallydawes.pokedex.source.TrainerSource
+import xyz.mcnallydawes.pokedex.domain.entity.Fire
+import xyz.mcnallydawes.pokedex.domain.entity.Pokemon
+import xyz.mcnallydawes.pokedex.domain.entity.Trainer
+import xyz.mcnallydawes.pokedex.domain.entity.Water
+import xyz.mcnallydawes.pokedex.domain.request.DeletePokemonFromTrainerRequest
+import xyz.mcnallydawes.pokedex.domain.response.DeletePokemonFromTrainerResponse
+import xyz.mcnallydawes.pokedex.domain.source.TrainerSource
 
 class DeletePokemonFromTrainerTest {
 

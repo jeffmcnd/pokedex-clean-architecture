@@ -4,9 +4,9 @@ import com.nhaarman.mockito_kotlin.*
 import org.hamcrest.CoreMatchers.instanceOf
 import org.junit.Assert.*
 import org.junit.Test
-import xyz.mcnallydawes.pokedex.entity.Trainer
-import xyz.mcnallydawes.pokedex.request.CreateTrainerRequest
-import xyz.mcnallydawes.pokedex.source.TrainerSource
+import xyz.mcnallydawes.pokedex.domain.entity.Trainer
+import xyz.mcnallydawes.pokedex.domain.request.CreateTrainerRequest
+import xyz.mcnallydawes.pokedex.domain.source.TrainerSource
 
 class CreateTrainerTest {
 

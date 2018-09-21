@@ -1,9 +1,9 @@
 package xyz.mcnallydawes.pokedex
 
-import xyz.mcnallydawes.pokedex.boundary.ListPokemonInteractor
-import xyz.mcnallydawes.pokedex.request.ListPokemonRequest
-import xyz.mcnallydawes.pokedex.response.ListPokemonResponse
-import xyz.mcnallydawes.pokedex.source.PokemonSource
+import xyz.mcnallydawes.pokedex.domain.boundary.ListPokemonInteractor
+import xyz.mcnallydawes.pokedex.domain.request.ListPokemonRequest
+import xyz.mcnallydawes.pokedex.domain.response.ListPokemonResponse
+import xyz.mcnallydawes.pokedex.domain.source.PokemonSource
 
 class ListPokemon(private val pokemonSource: PokemonSource) : ListPokemonInteractor {
 

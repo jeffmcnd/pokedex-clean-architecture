@@ -6,8 +6,8 @@ import android.arch.lifecycle.ViewModel
 import kotlinx.coroutines.experimental.launch
 import xyz.mcnallydawes.pokedex.Failure
 import xyz.mcnallydawes.pokedex.Success
-import xyz.mcnallydawes.pokedex.boundary.GetPokemonInteractor
-import xyz.mcnallydawes.pokedex.request.GetPokemonRequest
+import xyz.mcnallydawes.pokedex.domain.boundary.GetPokemonInteractor
+import xyz.mcnallydawes.pokedex.domain.request.GetPokemonRequest
 import kotlin.coroutines.experimental.CoroutineContext
 
 class PokemonDetailsViewModel(
