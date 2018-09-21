@@ -1,10 +1,10 @@
 package xyz.mcnallydawes.pokedex
 
-import xyz.mcnallydawes.pokedex.boundary.AddPokemonToTrainerInteractor
-import xyz.mcnallydawes.pokedex.request.AddPokemonToTrainerRequest
-import xyz.mcnallydawes.pokedex.response.AddPokemonToTrainerResponse
-import xyz.mcnallydawes.pokedex.source.PokemonSource
-import xyz.mcnallydawes.pokedex.source.TrainerSource
+import xyz.mcnallydawes.pokedex.domain.boundary.AddPokemonToTrainerInteractor
+import xyz.mcnallydawes.pokedex.domain.request.AddPokemonToTrainerRequest
+import xyz.mcnallydawes.pokedex.domain.response.AddPokemonToTrainerResponse
+import xyz.mcnallydawes.pokedex.domain.source.PokemonSource
+import xyz.mcnallydawes.pokedex.domain.source.TrainerSource
 
 class AddPokemonToTrainer(
         private val trainerSource: TrainerSource,

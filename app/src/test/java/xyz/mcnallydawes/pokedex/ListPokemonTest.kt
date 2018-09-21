@@ -4,13 +4,11 @@ import com.nhaarman.mockito_kotlin.doReturn
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.whenever
 import junit.framework.TestCase.assertEquals
-import org.junit.Before
 import org.junit.Test
-import xyz.mcnallydawes.pokedex.boundary.ListPokemonInteractor
-import xyz.mcnallydawes.pokedex.entity.Grass
-import xyz.mcnallydawes.pokedex.entity.Pokemon
-import xyz.mcnallydawes.pokedex.request.ListPokemonRequest
-import xyz.mcnallydawes.pokedex.source.PokemonSource
+import xyz.mcnallydawes.pokedex.domain.entity.Grass
+import xyz.mcnallydawes.pokedex.domain.entity.Pokemon
+import xyz.mcnallydawes.pokedex.domain.request.ListPokemonRequest
+import xyz.mcnallydawes.pokedex.domain.source.PokemonSource
 
 class ListPokemonTest {
 

@@ -3,9 +3,9 @@ package xyz.mcnallydawes.pokedex
 import com.nhaarman.mockito_kotlin.*
 import org.junit.Assert.*
 import org.junit.Test
-import xyz.mcnallydawes.pokedex.entity.Trainer
-import xyz.mcnallydawes.pokedex.request.SearchTrainersRequest
-import xyz.mcnallydawes.pokedex.source.TrainerSource
+import xyz.mcnallydawes.pokedex.domain.entity.Trainer
+import xyz.mcnallydawes.pokedex.domain.request.SearchTrainersRequest
+import xyz.mcnallydawes.pokedex.domain.source.TrainerSource
 
 class SearchTrainersTest {
     private val trainerSource: TrainerSource = mock()

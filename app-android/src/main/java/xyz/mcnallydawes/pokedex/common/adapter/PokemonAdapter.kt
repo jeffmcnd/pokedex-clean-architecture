@@ -4,7 +4,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import xyz.mcnallydawes.pokedex.common.inflater.PokemonInflater
 import xyz.mcnallydawes.pokedex.common.viewholder.PokemonViewHolder
-import xyz.mcnallydawes.pokedex.entity.Pokemon
+import xyz.mcnallydawes.pokedex.domain.entity.Pokemon
 
 typealias PokemonClickListener = (Pokemon) -> Unit
 

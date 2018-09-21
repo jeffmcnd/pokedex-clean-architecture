@@ -5,10 +5,10 @@ import com.nhaarman.mockito_kotlin.whenever
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Test
-import xyz.mcnallydawes.pokedex.entity.Grass
-import xyz.mcnallydawes.pokedex.entity.Pokemon
-import xyz.mcnallydawes.pokedex.request.GetPokemonRequest
-import xyz.mcnallydawes.pokedex.source.PokemonSource
+import xyz.mcnallydawes.pokedex.domain.entity.Grass
+import xyz.mcnallydawes.pokedex.domain.entity.Pokemon
+import xyz.mcnallydawes.pokedex.domain.request.GetPokemonRequest
+import xyz.mcnallydawes.pokedex.domain.source.PokemonSource
 
 class GetPokemonTest {
 

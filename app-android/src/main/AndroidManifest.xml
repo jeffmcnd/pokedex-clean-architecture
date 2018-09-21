@@ -10,6 +10,7 @@
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/AppTheme"
+    android:name=".PokemonApplication"
     >
     <activity android:name="xyz.mcnallydawes.pokedex.screens.searchpokemon.SearchPokemonActivity">
       <intent-filter>

@@ -1,21 +1,17 @@
 package xyz.mcnallydawes.pokedex.screens.pokemondetails
 
-import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_pokemon_details.*
+import org.koin.android.ext.android.inject
 import xyz.mcnallydawes.pokedex.R
 import xyz.mcnallydawes.pokedex.common.constants.Extras
 import xyz.mcnallydawes.pokedex.common.livedata.NonNullObserver
-import xyz.mcnallydawes.pokedex.di.AndroidInjector
 
 class PokemonDetailsActivity : AppCompatActivity() {
 
-    private val vm: PokemonDetailsViewModel by lazy {
-        val factory = AndroidInjector.getViewModelFactory(this)
-        ViewModelProviders.of(this, factory).get(PokemonDetailsViewModel::class.java)
-    }
+    private val vm: PokemonDetailsViewModel by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

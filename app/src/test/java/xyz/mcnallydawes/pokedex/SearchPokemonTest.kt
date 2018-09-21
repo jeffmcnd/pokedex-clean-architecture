@@ -4,11 +4,11 @@ import com.nhaarman.mockito_kotlin.*
 import junit.framework.TestCase.assertEquals
 import junit.framework.TestCase.assertTrue
 import org.junit.Test
-import xyz.mcnallydawes.pokedex.boundary.SearchPokemonInteractor
-import xyz.mcnallydawes.pokedex.entity.Fire
-import xyz.mcnallydawes.pokedex.entity.Pokemon
-import xyz.mcnallydawes.pokedex.request.SearchPokemonRequest
-import xyz.mcnallydawes.pokedex.source.PokemonSource
+import xyz.mcnallydawes.pokedex.domain.boundary.SearchPokemonInteractor
+import xyz.mcnallydawes.pokedex.domain.entity.Fire
+import xyz.mcnallydawes.pokedex.domain.entity.Pokemon
+import xyz.mcnallydawes.pokedex.domain.request.SearchPokemonRequest
+import xyz.mcnallydawes.pokedex.domain.source.PokemonSource
 
 class SearchPokemonTest {
 

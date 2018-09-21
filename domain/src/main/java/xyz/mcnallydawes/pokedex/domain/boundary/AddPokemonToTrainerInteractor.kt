@@ -1,0 +1,6 @@
+package xyz.mcnallydawes.pokedex.domain.boundary
+
+import xyz.mcnallydawes.pokedex.domain.request.AddPokemonToTrainerRequest
+import xyz.mcnallydawes.pokedex.domain.response.AddPokemonToTrainerResponse
+
+interface AddPokemonToTrainerInteractor : Interactor<AddPokemonToTrainerRequest, AddPokemonToTrainerResponse>

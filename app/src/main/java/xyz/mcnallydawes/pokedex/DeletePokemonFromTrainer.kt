@@ -1,9 +1,9 @@
 package xyz.mcnallydawes.pokedex
 
-import xyz.mcnallydawes.pokedex.boundary.DeletePokemonFromTrainerInteractor
-import xyz.mcnallydawes.pokedex.request.DeletePokemonFromTrainerRequest
-import xyz.mcnallydawes.pokedex.response.DeletePokemonFromTrainerResponse
-import xyz.mcnallydawes.pokedex.source.TrainerSource
+import xyz.mcnallydawes.pokedex.domain.boundary.DeletePokemonFromTrainerInteractor
+import xyz.mcnallydawes.pokedex.domain.request.DeletePokemonFromTrainerRequest
+import xyz.mcnallydawes.pokedex.domain.response.DeletePokemonFromTrainerResponse
+import xyz.mcnallydawes.pokedex.domain.source.TrainerSource
 
 class DeletePokemonFromTrainer(
         private val trainerSource: TrainerSource
