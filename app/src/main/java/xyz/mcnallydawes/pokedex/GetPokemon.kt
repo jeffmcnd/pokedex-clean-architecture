@@ -8,7 +8,7 @@ import xyz.mcnallydawes.pokedex.domain.source.PokemonSource
 class GetPokemon(private val pokemonSource: PokemonSource) : GetPokemonInteractor {
 
     override fun execute(request: GetPokemonRequest): Try<GetPokemonResponse> =
-            pokemonSource.getById(request.id)
+            pokemonSource.read(request.id)
                     .flatMap { pokemon ->
                         Success(GetPokemonResponse(pokemon))
                     }

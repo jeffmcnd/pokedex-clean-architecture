@@ -8,7 +8,7 @@ import xyz.mcnallydawes.pokedex.domain.source.TrainerSource
 class SearchTrainers(private val trainerSource: TrainerSource) : SearchTrainersInteractor {
 
     override fun execute(request: SearchTrainersRequest): Try<SearchTrainersResponse> =
-            trainerSource.getByNameStartingWith(request.query)
+            trainerSource.search(request.query)
                     .map { trainers ->
                         SearchTrainersResponse(trainers)
                     }

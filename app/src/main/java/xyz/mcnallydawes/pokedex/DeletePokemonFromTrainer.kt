@@ -10,7 +10,7 @@ class DeletePokemonFromTrainer(
 ) : DeletePokemonFromTrainerInteractor {
 
     override fun execute(request: DeletePokemonFromTrainerRequest): Try<DeletePokemonFromTrainerResponse> = Try {
-        val trainerResponse = trainerSource.getById(request.trainerId)
+        val trainerResponse = trainerSource.read(request.trainerId)
 
         if (trainerResponse is Failure) {
             throw trainerResponse.throwable
@@ -18,11 +18,18 @@ class DeletePokemonFromTrainer(
 
         val trainer = (trainerResponse as Success).value ?: throw Throwable("Trainer with id ${request.trainerId} does not exist.")
 
-        trainer.starters.removeIf { pokemon ->
-            request.pokemonId == pokemon.id
+        var position = -1
+        trainer.starters.forEachIndexed { index, pokemon ->
+            if (pokemon.id == request.pokemonId) {
+                position = index
+            }
         }
 
-        trainerSource.save(trainer)
+        if (position >= 0) {
+            trainer.starters.removeAt(position)
+        }
+
+        trainerSource.update(trainer)
         DeletePokemonFromTrainerResponse(trainer)
     }
 

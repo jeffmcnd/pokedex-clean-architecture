@@ -8,7 +8,7 @@ import xyz.mcnallydawes.pokedex.domain.source.PokemonSource
 class ListPokemon(private val pokemonSource: PokemonSource) : ListPokemonInteractor {
 
     override fun execute(request: ListPokemonRequest): Try<ListPokemonResponse> =
-            pokemonSource.getAll()
+            pokemonSource.read()
                     .map { pokemon ->
                         ListPokemonResponse(pokemon)
                     }

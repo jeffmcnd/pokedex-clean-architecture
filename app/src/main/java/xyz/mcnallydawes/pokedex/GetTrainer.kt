@@ -8,7 +8,7 @@ import xyz.mcnallydawes.pokedex.domain.source.TrainerSource
 class GetTrainer(private val trainerSource: TrainerSource) : GetTrainerInteractor {
 
     override fun execute(request: GetTrainerRequest): Try<GetTrainerResponse> =
-            trainerSource.getById(request.id)
+            trainerSource.read(request.id)
                     .flatMap { trainer ->
                         if (trainer == null) {
                             Failure<GetTrainerResponse>(Throwable("Trainer not found"))

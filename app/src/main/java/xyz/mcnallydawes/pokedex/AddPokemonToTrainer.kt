@@ -12,13 +12,13 @@ class AddPokemonToTrainer(
 ) : AddPokemonToTrainerInteractor {
 
     override fun execute(request: AddPokemonToTrainerRequest): Try<AddPokemonToTrainerResponse> = Try {
-        val trainerResponse = trainerSource.getById(request.trainerId)
+        val trainerResponse = trainerSource.read(request.trainerId)
 
         if (trainerResponse is Failure) {
             throw trainerResponse.throwable
         }
 
-        val pokemonResponse = pokemonSource.getById(request.pokemonId)
+        val pokemonResponse = pokemonSource.read(request.pokemonId)
 
         if (pokemonResponse is Failure) {
             throw pokemonResponse.throwable
@@ -35,7 +35,7 @@ class AddPokemonToTrainer(
 
         trainer.starters.add(pokemon)
 
-        trainerSource.save(trainer)
+        trainerSource.update(trainer)
 
         AddPokemonToTrainerResponse(trainer)
     }
