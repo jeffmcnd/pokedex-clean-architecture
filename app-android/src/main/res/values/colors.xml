@@ -6,8 +6,16 @@
     <color name="green">#58c458</color>
     <color name="red">#b44444</color>
     <color name="blue">#3d3dae</color>
+    <color name="grassColor">#58c458</color>
+    <color name="poisonColor">#6e3dae</color>
+    <color name="fireColor">#b44444</color>
+    <color name="flyingColor">#ae59d2</color>
+    <color name="waterColor">#3d3dae</color>
+    <color name="bugColor">#83c458</color>
+    <color name="normalColor">#aca57e</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="textWhite">#FFFFFF</color>
     <color name="textWhiteHint">#b7b7b7</color>
+    <color name="separatorColor">#b7b7b7</color>
 </resources>
