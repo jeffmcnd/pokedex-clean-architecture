@@ -4,15 +4,15 @@ import org.koin.android.viewmodel.ext.koin.viewModel
 import org.koin.dsl.module.module
 import xyz.mcnallydawes.pokedex.infrainmemory.source.HashMapPokemonSource
 import xyz.mcnallydawes.pokedex.infrainmemory.source.HashMapTrainerSource
-import xyz.mcnallydawes.pokedex.infraroom.source.RoomPokemonSource
 import xyz.mcnallydawes.pokedex.screens.main.MainModel
-import xyz.mcnallydawes.pokedex.screens.main.MainPage
 import xyz.mcnallydawes.pokedex.screens.main.MainViewModel
 import xyz.mcnallydawes.pokedex.screens.main.SearchTrainersPage
 import xyz.mcnallydawes.pokedex.screens.pokemondetails.PokemonDetailsViewModel
 import xyz.mcnallydawes.pokedex.screens.pokemondetails.PokemonModel
 import xyz.mcnallydawes.pokedex.screens.searchpokemon.SearchPokemonModel
 import xyz.mcnallydawes.pokedex.screens.searchpokemon.SearchPokemonViewModel
+import xyz.mcnallydawes.pokedex.screens.searchtrainers.SearchTrainersModel
+import xyz.mcnallydawes.pokedex.screens.searchtrainers.SearchTrainersViewModel
 
 
 val interactorModule = module {
@@ -45,9 +45,17 @@ val viewModelModule = module {
     }
 
     viewModel {
-        val model = SearchPokemonModel("", mutableListOf())
+        SearchTrainersViewModel(
+                SearchTrainersModel("", mutableListOf()),
+                get<ListTrainers>(),
+                get<SearchTrainers>(),
+                kotlinx.coroutines.experimental.IO
+        )
+    }
+
+    viewModel {
         SearchPokemonViewModel(
-                model,
+                SearchPokemonModel("", mutableListOf()),
                 get<ListPokemon>(),
                 get<SearchPokemon>(),
                 kotlinx.coroutines.experimental.IO
@@ -55,9 +63,8 @@ val viewModelModule = module {
     }
 
     viewModel {
-        val model = PokemonModel()
         PokemonDetailsViewModel(
-                model,
+                PokemonModel(),
                 kotlinx.coroutines.experimental.IO,
                 get<GetPokemon>()
         )

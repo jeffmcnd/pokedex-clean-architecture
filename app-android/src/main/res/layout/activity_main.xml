@@ -20,4 +20,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/menu_main_navigation" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/separatorColor"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigationView" />
+
 </android.support.constraint.ConstraintLayout>
