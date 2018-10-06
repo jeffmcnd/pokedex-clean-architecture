@@ -8,7 +8,7 @@ import xyz.mcnallydawes.pokedex.domain.source.TrainerSource
 class ListTrainers(private val trainerSource: TrainerSource) : ListTrainersInteractor {
 
     override fun execute(request: ListTrainersRequest): Try<ListTrainersResponse> =
-            trainerSource.getAll()
+            trainerSource.read()
                     .map { trainers ->
                         ListTrainersResponse(trainers)
                     }

@@ -8,7 +8,7 @@ import xyz.mcnallydawes.pokedex.domain.source.PokemonSource
 class SearchPokemon(private val pokemonSource: PokemonSource) : SearchPokemonInteractor {
 
     override fun execute(request: SearchPokemonRequest): Try<SearchPokemonResponse> =
-            pokemonSource.getByNameStartingWith(request.query)
+            pokemonSource.search(request.query)
                     .map { pokemon ->
                         SearchPokemonResponse(pokemon)
                     }

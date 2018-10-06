@@ -11,12 +11,12 @@ class RoomPokemonSource(
         private val roomToPokemon: RoomPokemonToPokemon
 ) : PokemonSource {
 
-    override fun getAll(): Try<List<Pokemon>> = Try {
-        dao.getAll().map(roomToPokemon)
+    override fun read(): Try<List<Pokemon>> = Try {
+        dao.read().map(roomToPokemon)
     }
 
-    override fun getById(id: String): Try<Pokemon?> = Try {
-        val pokemon = dao.getById(id)
+    override fun read(id: String): Try<Pokemon?> = Try {
+        val pokemon = dao.read(id)
         if (pokemon == null) {
             null
         } else {
@@ -24,8 +24,8 @@ class RoomPokemonSource(
         }
     }
 
-    override fun getByNameStartingWith(name: String): Try<List<Pokemon>> = Try {
-        dao.getByNameStartingWith("%$name%").map(roomToPokemon)
+    override fun search(query: String): Try<List<Pokemon>> = Try {
+        dao.search("%$query%").map(roomToPokemon)
     }
 
 }

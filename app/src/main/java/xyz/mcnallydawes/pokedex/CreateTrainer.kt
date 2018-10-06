@@ -5,23 +5,28 @@ import xyz.mcnallydawes.pokedex.domain.entity.Trainer
 import xyz.mcnallydawes.pokedex.domain.request.CreateTrainerRequest
 import xyz.mcnallydawes.pokedex.domain.response.CreateTrainerResponse
 import xyz.mcnallydawes.pokedex.domain.source.TrainerSource
+import java.util.*
 
 class CreateTrainer(private val trainerSource: TrainerSource) : CreateTrainerInteractor {
 
     override fun execute(request: CreateTrainerRequest): Try<CreateTrainerResponse> = Try {
-        val response = trainerSource.getByName(request.name)
+        val response = trainerSource.search(request.name)
 
         if (response is Failure) {
             throw response.throwable
         }
 
-        if ((response as Success).value != null) {
+        val size = (response as Success).value.filter {
+            it.name.toLowerCase(Locale.CANADA) != request.name.toLowerCase(Locale.CANADA)
+        }.size
+
+        if (size > 0) {
             throw Throwable("Trainer with name ${request.name} already exists.")
         }
 
         val newTrainer = Trainer(name = request.name)
 
-        val saveResponse = trainerSource.save(newTrainer)
+        val saveResponse = trainerSource.create(newTrainer)
 
         if (saveResponse is Failure) throw saveResponse.throwable
 

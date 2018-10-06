@@ -13,12 +13,12 @@ interface PokemonDao {
     fun add(vararg pokemon: RoomPokemon)
 
     @Query("select * from pokemon where id = :id")
-    fun getById(id: String): RoomPokemon?
+    fun read(id: String): RoomPokemon?
 
     @Query("select * from pokemon")
-    fun getAll() : List<RoomPokemon>
+    fun read() : List<RoomPokemon>
 
     @Query("select * from pokemon where name like :name")
-    fun getByNameStartingWith(name: String): List<RoomPokemon>
+    fun search(name: String): List<RoomPokemon>
 
 }
