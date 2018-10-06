@@ -51,11 +51,11 @@ val inMemoryModule = module {
     }
 
     single(name = "HashMapPokemonSource") {
-        HashMapPokemonSource(get(), get())
+        HashMapPokemonSource(get(), get(name = "HashMapPokemonSearchSource"))
     }
 
     single(name = "HashMapTrainerSource") {
-        HashMapTrainerSource(get(), get())
+        HashMapTrainerSource(get(), get(name = "HashMapTrainerSearchSource"))
     }
 
 }
