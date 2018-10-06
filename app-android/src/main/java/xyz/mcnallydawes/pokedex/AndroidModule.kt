@@ -71,3 +71,9 @@ val viewModelModule = module {
     }
 
 }
+
+val androidUtilModule = module {
+
+    single { TypeColorGenerator() }
+
+}

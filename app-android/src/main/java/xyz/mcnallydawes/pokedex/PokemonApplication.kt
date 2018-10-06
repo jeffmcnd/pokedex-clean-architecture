@@ -15,7 +15,8 @@ class PokemonApplication : Application() {
                         inMemoryModule,
                         roomModule,
                         interactorModule,
-                        viewModelModule
+                        viewModelModule,
+                        androidUtilModule
                 )
         )
     }
