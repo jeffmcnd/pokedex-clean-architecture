@@ -3,14 +3,15 @@ package xyz.mcnallydawes.pokedex.screens.searchpokemon
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity
+import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.TextView
 import com.jakewharton.rxbinding2.widget.RxTextView
 import com.jakewharton.rxbinding2.widget.TextViewAfterTextChangeEvent
-import kotlinx.android.synthetic.main.activity_search_pokemon.*
+import kotlinx.android.synthetic.main.fragment_search_pokemon.*
 import org.koin.android.ext.android.inject
 import xyz.mcnallydawes.pokedex.R
 import xyz.mcnallydawes.pokedex.common.adapter.PokemonAdapter
@@ -20,34 +21,38 @@ import xyz.mcnallydawes.pokedex.common.livedata.NonNullObserver
 import xyz.mcnallydawes.pokedex.screens.pokemondetails.PokemonDetailsActivity
 import java.util.concurrent.TimeUnit
 
-class SearchPokemonActivity : AppCompatActivity() {
+class SearchPokemonFragment : Fragment() {
+
+    companion object {
+        fun newInstance(): SearchPokemonFragment = SearchPokemonFragment()
+    }
 
     private val vm: SearchPokemonViewModel by inject()
 
     private val pokemonAdapter: PokemonAdapter by lazy {
-        val inflater = PokemonInflater(LayoutInflater.from(this))
+        val inflater = PokemonInflater(LayoutInflater.from(requireContext()))
         PokemonAdapter(inflater) { pokemon ->
-            val intent = Intent(this, PokemonDetailsActivity::class.java)
+            val intent = Intent(requireContext(), PokemonDetailsActivity::class.java)
             intent.putExtra(Extras.POKEMON_ID, pokemon.id)
             startActivity(intent)
         }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_search_pokemon)
+    override fun onCreateView(
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
+    ): View? = inflater.inflate(R.layout.fragment_search_pokemon, container, false)
 
+    override fun onViewCreated(view: View, savedState: Bundle?) {
+        super.onViewCreated(view, savedState)
         setUpViews()
         setUpObservers()
-
-        val isInitialized = savedInstanceState?.getBoolean(Extras.IS_VIEW_MODEL_INITIALIZED) ?: false
-        if (!isInitialized) {
-            vm.load()
-        }
+        setUpViewModel(savedState)
     }
 
-    override fun onSaveInstanceState(outState: Bundle?) {
-        outState?.putBoolean(Extras.IS_VIEW_MODEL_INITIALIZED, true)
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putBoolean(Extras.IS_VIEW_MODEL_INITIALIZED, true)
         super.onSaveInstanceState(outState)
     }
 
@@ -57,8 +62,20 @@ class SearchPokemonActivity : AppCompatActivity() {
         setUpSearchEditText()
     }
 
+    private fun setUpObservers() {
+        vm.model.observe(this, NonNullObserver(render))
+        vm.error.observe(this, NonNullObserver(handleError))
+    }
+
+    private fun setUpViewModel(savedState: Bundle?) {
+        val isInitialized = savedState?.getBoolean(Extras.IS_VIEW_MODEL_INITIALIZED) ?: false
+        if (!isInitialized) {
+            vm.load()
+        }
+    }
+
     private fun setUpPokemonRecyclerView() {
-        pokemonList.layoutManager = LinearLayoutManager(this)
+        pokemonList.layoutManager = LinearLayoutManager(requireContext())
         pokemonList.adapter = pokemonAdapter
     }
 
@@ -95,11 +112,6 @@ class SearchPokemonActivity : AppCompatActivity() {
         } else if (query.length >= 2) {
             vm.search(searchEditText.text.toString())
         }
-    }
-
-    private fun setUpObservers() {
-        vm.model.observe(this, NonNullObserver(render))
-        vm.error.observe(this, NonNullObserver(handleError))
     }
 
     private val render: (SearchPokemonModel) -> Unit = { model ->

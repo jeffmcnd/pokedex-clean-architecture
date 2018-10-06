@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_search_trainers"
+        android:icon="@drawable/ic_trainers_24dp"
+        android:title="@string/trainers" />
+
+    <item
+        android:id="@+id/nav_search_pokemon"
+        android:icon="@drawable/ic_pokemon_24dp"
+        android:title="@string/pokemon" />
+
+</menu>
