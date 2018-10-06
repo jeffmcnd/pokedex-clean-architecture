@@ -5,6 +5,10 @@ import org.koin.dsl.module.module
 import xyz.mcnallydawes.pokedex.infrainmemory.source.HashMapPokemonSource
 import xyz.mcnallydawes.pokedex.infrainmemory.source.HashMapTrainerSource
 import xyz.mcnallydawes.pokedex.infraroom.source.RoomPokemonSource
+import xyz.mcnallydawes.pokedex.screens.main.MainModel
+import xyz.mcnallydawes.pokedex.screens.main.MainPage
+import xyz.mcnallydawes.pokedex.screens.main.MainViewModel
+import xyz.mcnallydawes.pokedex.screens.main.SearchTrainersPage
 import xyz.mcnallydawes.pokedex.screens.pokemondetails.PokemonDetailsViewModel
 import xyz.mcnallydawes.pokedex.screens.pokemondetails.PokemonModel
 import xyz.mcnallydawes.pokedex.screens.searchpokemon.SearchPokemonModel
@@ -34,6 +38,11 @@ val interactorModule = module {
 }
 
 val viewModelModule = module {
+
+    viewModel {
+        val model = MainModel(SearchTrainersPage)
+        MainViewModel(model)
+    }
 
     viewModel {
         val model = SearchPokemonModel("", mutableListOf())
