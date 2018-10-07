@@ -14,6 +14,7 @@ import com.jakewharton.rxbinding2.widget.TextViewAfterTextChangeEvent
 import kotlinx.android.synthetic.main.fragment_search_pokemon.*
 import org.koin.android.ext.android.inject
 import xyz.mcnallydawes.pokedex.R
+import xyz.mcnallydawes.pokedex.TypeColorGenerator
 import xyz.mcnallydawes.pokedex.common.adapter.PokemonAdapter
 import xyz.mcnallydawes.pokedex.common.constants.Extras
 import xyz.mcnallydawes.pokedex.common.inflater.PokemonInflater
@@ -28,9 +29,10 @@ class SearchPokemonFragment : Fragment() {
     }
 
     private val vm: SearchPokemonViewModel by inject()
+    private val typeColorGenerator: TypeColorGenerator by inject()
 
     private val pokemonAdapter: PokemonAdapter by lazy {
-        val inflater = PokemonInflater(LayoutInflater.from(requireContext()))
+        val inflater = PokemonInflater(LayoutInflater.from(requireContext()), typeColorGenerator)
         PokemonAdapter(inflater) { pokemon ->
             val intent = Intent(requireContext(), PokemonDetailsActivity::class.java)
             intent.putExtra(Extras.POKEMON_ID, pokemon.id)
