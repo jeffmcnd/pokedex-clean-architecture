@@ -14,7 +14,7 @@ import com.jakewharton.rxbinding2.widget.TextViewAfterTextChangeEvent
 import kotlinx.android.synthetic.main.fragment_search_pokemon.*
 import org.koin.android.ext.android.inject
 import xyz.mcnallydawes.pokedex.R
-import xyz.mcnallydawes.pokedex.TypeColorGenerator
+import xyz.mcnallydawes.pokedex.common.util.TypeColorGenerator
 import xyz.mcnallydawes.pokedex.common.adapter.PokemonAdapter
 import xyz.mcnallydawes.pokedex.common.constants.Extras
 import xyz.mcnallydawes.pokedex.common.inflater.PokemonInflater

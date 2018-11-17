@@ -2,6 +2,7 @@ package xyz.mcnallydawes.pokedex
 
 import org.koin.android.viewmodel.ext.koin.viewModel
 import org.koin.dsl.module.module
+import xyz.mcnallydawes.pokedex.common.util.TypeColorGenerator
 import xyz.mcnallydawes.pokedex.infrainmemory.source.HashMapPokemonSource
 import xyz.mcnallydawes.pokedex.infrainmemory.source.HashMapTrainerSource
 import xyz.mcnallydawes.pokedex.screens.main.MainModel

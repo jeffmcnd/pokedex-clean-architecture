@@ -12,7 +12,7 @@ import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_pokemon_details.*
 import org.koin.android.ext.android.inject
 import xyz.mcnallydawes.pokedex.R
-import xyz.mcnallydawes.pokedex.TypeColorGenerator
+import xyz.mcnallydawes.pokedex.common.util.TypeColorGenerator
 import xyz.mcnallydawes.pokedex.common.constants.Extras
 import xyz.mcnallydawes.pokedex.common.livedata.NonNullObserver
 

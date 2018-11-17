@@ -3,7 +3,7 @@ package xyz.mcnallydawes.pokedex.common.inflater
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import xyz.mcnallydawes.pokedex.R
-import xyz.mcnallydawes.pokedex.TypeColorGenerator
+import xyz.mcnallydawes.pokedex.common.util.TypeColorGenerator
 import xyz.mcnallydawes.pokedex.common.viewholder.PokemonViewHolder
 
 class PokemonInflater(

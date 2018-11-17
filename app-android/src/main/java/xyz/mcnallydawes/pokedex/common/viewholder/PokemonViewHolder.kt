@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.widget.LinearLayout
 import kotlinx.android.synthetic.main.item_pokemon.view.*
-import xyz.mcnallydawes.pokedex.TypeColorGenerator
+import xyz.mcnallydawes.pokedex.common.util.TypeColorGenerator
 import xyz.mcnallydawes.pokedex.common.adapter.PokemonClickListener
 import xyz.mcnallydawes.pokedex.domain.entity.Pokemon
 

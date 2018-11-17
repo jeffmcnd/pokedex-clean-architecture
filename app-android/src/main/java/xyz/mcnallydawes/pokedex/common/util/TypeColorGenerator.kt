@@ -1,7 +1,8 @@
-package xyz.mcnallydawes.pokedex
+package xyz.mcnallydawes.pokedex.common.util
 
 import android.content.res.Resources
 import android.support.v4.content.res.ResourcesCompat
+import xyz.mcnallydawes.pokedex.R
 import xyz.mcnallydawes.pokedex.domain.entity.*
 
 class TypeColorGenerator : (Resources, Type) -> Int {
